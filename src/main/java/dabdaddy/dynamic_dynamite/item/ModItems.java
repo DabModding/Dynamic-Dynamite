@@ -1,10 +1,7 @@
 package dabdaddy.dynamic_dynamite.item;
 
 import dabdaddy.dynamic_dynamite.Reference;
-import dabdaddy.dynamic_dynamite.item.dynamite.BouncyDynamiteItem;
-import dabdaddy.dynamic_dynamite.item.dynamite.FusedDynamiteItem;
-import dabdaddy.dynamic_dynamite.item.dynamite.LightningDynamiteItem;
-import dabdaddy.dynamic_dynamite.item.dynamite.QuickDynamiteItem;
+import dabdaddy.dynamic_dynamite.item.dynamite.*;
 import dabdaddy.dynamic_dynamite.tabs.ModCreativeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
@@ -21,6 +18,7 @@ public class ModItems
     public static final RegistryObject<Item> BOUNCY_DYNAMITE_ITEM = ITEMS.register("bouncy_dynamite", () -> new BouncyDynamiteItem());
     public static final RegistryObject<Item> FUSED_DYNAMITE_ITEM = ITEMS.register("fused_dynamite", () -> new FusedDynamiteItem());
     public static final RegistryObject<Item> LIGHTNING_DYNAMITE_ITEM = ITEMS.register("lightning_dynamite", () -> new LightningDynamiteItem());
+    public static final RegistryObject<Item> FLAMING_DYNAMITE_ITEM = ITEMS.register("flaming_dynamite", () -> new FlamingDynamiteItem());
 
     public static void addItemsToCreativeTab()
     {

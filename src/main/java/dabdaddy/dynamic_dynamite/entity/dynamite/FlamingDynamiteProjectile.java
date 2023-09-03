@@ -11,12 +11,12 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 
-public class LightningDynamiteProjectile extends DynamiteProjectile
+public class FlamingDynamiteProjectile extends DynamiteProjectile
 {
-    private final int LIGHTNING_AMOUNT = 10;
-    private final int LIGHTNING_RADIUS = 3;
+    private final int FLAME_AMOUNT = 20;
+    private final int FLAME_RADIUS = 3;
 
-    public LightningDynamiteProjectile(Level _level, LivingEntity _shooter)
+    public FlamingDynamiteProjectile(Level _level, LivingEntity _shooter)
     {
         super(_level, _shooter);
     }
@@ -24,14 +24,15 @@ public class LightningDynamiteProjectile extends DynamiteProjectile
     @Override
     protected void contact(BlockHitResult _result)
     {
-        for(int i = 0; i < LIGHTNING_AMOUNT; i++)
+        for(int i = 0; i < FLAME_AMOUNT; i++)
         {
-            Vec2 randomOffset = Random.randomPointInRadius(LIGHTNING_RADIUS);
+            Vec2 randomOffset = Random.randomPointInRadius(FLAME_RADIUS);
             Vec3 position = new Vec3(
-                    _result.getBlockPos().getX() + randomOffset.x,
-                    _result.getBlockPos().getY(),
-                    _result.getBlockPos().getZ() + randomOffset.y);
-            World.lightning(position, this.level());
+                _result.getBlockPos().getX() + randomOffset.x,
+                _result.getBlockPos().getY() + 1,
+                _result.getBlockPos().getZ() + randomOffset.y
+            );
+            World.ignite(position, this.level());
         }
     }
 
@@ -44,6 +45,6 @@ public class LightningDynamiteProjectile extends DynamiteProjectile
     @Override
     protected Item getDefaultItem()
     {
-        return ModItems.LIGHTNING_DYNAMITE_ITEM.get();
+        return ModItems.FLAMING_DYNAMITE_ITEM.get();
     }
 }
