@@ -1,5 +1,6 @@
 package dabdaddy.dynamic_dynamite;
 
+import dabdaddy.dynamic_dynamite.entity.ModEntities;
 import dabdaddy.dynamic_dynamite.item.ModItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -15,6 +16,8 @@ public class DynamicDynamite
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
+
+        ModEntities.TYPES.register(modEventBus);
 
         ModItems.ITEMS.register(modEventBus);
 
