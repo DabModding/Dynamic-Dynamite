@@ -1,6 +1,7 @@
 package dabdaddy.dynamic_dynamite.entity;
 
 import dabdaddy.dynamic_dynamite.item.ModItems;
+import dabdaddy.dynamic_dynamite.util.World;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -37,11 +38,7 @@ public class DynamiteProjectile extends ThrowableItemProjectile
 
     protected void contact(BlockHitResult _result)
     {
-        BlockPos pos = _result.getBlockPos();
-        float explosionAmount = 4.0f;
-        float explosionRadius = 4.0f;
-
-        this.level().explode(this, pos.getX(), pos.getY(), pos.getZ(), explosionRadius, Level.ExplosionInteraction.BLOCK);
+        World.explode(this, _result.getBlockPos(), this.level(), 1.0f);
     }
 
     @Override
