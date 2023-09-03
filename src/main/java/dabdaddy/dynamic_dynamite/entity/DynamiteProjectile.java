@@ -30,6 +30,20 @@ public class DynamiteProjectile extends ThrowableItemProjectile
         super(EntityType.SNOWBALL, _x, _y, _z, _level);
     }
 
+    protected boolean destroyOnLanding()
+    {
+        return true;
+    }
+
+    protected void contact(BlockHitResult _result)
+    {
+        BlockPos pos = _result.getBlockPos();
+        float explosionAmount = 4.0f;
+        float explosionRadius = 4.0f;
+
+        this.level().explode(this, pos.getX(), pos.getY(), pos.getZ(), explosionRadius, Level.ExplosionInteraction.BLOCK);
+    }
+
     @Override
     public Packet<ClientGamePacketListener> getAddEntityPacket()
     {
@@ -45,14 +59,13 @@ public class DynamiteProjectile extends ThrowableItemProjectile
     @Override
     protected void onHitBlock(BlockHitResult _result)
     {
-        BlockPos pos = _result.getBlockPos();
-        float explosionAmount = 4.0f;
-        float explosionRadius = 4.0f;
-
         if(!this.level().isClientSide())
         {
-            this.level().explode(this, pos.getX(), pos.getY(), pos.getZ(), explosionRadius, Level.ExplosionInteraction.BLOCK);
-            this.discard();
+            contact(_result);
+            if(destroyOnLanding())
+            {
+                this.discard();
+            }
         }
 
         super.onHitBlock(_result);

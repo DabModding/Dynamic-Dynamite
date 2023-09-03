@@ -16,6 +16,16 @@ public class DynamiteItem extends Item
         super(new Item.Properties());
     }
 
+    protected DynamiteProjectile constructProjectile(Level _level, Player _player)
+    {
+        return new DynamiteProjectile(_level, _player);
+    }
+
+    protected int getCooldownTimeInTicks()
+    {
+        return 20;
+    }
+
     @Override
     public InteractionResultHolder<ItemStack> use(Level _level, Player _player, InteractionHand _usedHand)
     {
@@ -24,14 +34,13 @@ public class DynamiteItem extends Item
         if(!_level.isClientSide())
         {
             // Construct projectile
-            DynamiteProjectile proj = new DynamiteProjectile(_level, _player);
+            DynamiteProjectile proj = constructProjectile(_level, _player);
             proj.setItem(stack);
             proj.shootFromRotation(_player, _player.getXRot(), _player.getYRot(), 0.0F, 1.5F, 1.0F);
             _level.addFreshEntity(proj);
 
             // Add Item Cooldown
-            int cooldownLengthTicks = 20;
-            _player.getCooldowns().addCooldown(this, cooldownLengthTicks);
+            _player.getCooldowns().addCooldown(this, getCooldownTimeInTicks());
         }
 
         _player.awardStat(Stats.ITEM_USED.get(this));
