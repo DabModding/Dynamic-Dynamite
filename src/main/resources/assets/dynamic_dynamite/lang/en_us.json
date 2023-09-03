@@ -2,6 +2,7 @@
   "item.dynamic_dynamite.dynamite": "Dynamite",
   "item.dynamic_dynamite.quick_dynamite": "Quick Dynamite",
   "item.dynamic_dynamite.bouncy_dynamite": "Bouncy Dynamite",
+  "item.dynamic_dynamite.fused_dynamite": "Fused Dynamite",
 
   "itemGroup.dynamite_tab": "Dynamite"
 }

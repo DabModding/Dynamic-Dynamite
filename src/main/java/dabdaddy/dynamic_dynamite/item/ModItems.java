@@ -2,6 +2,7 @@ package dabdaddy.dynamic_dynamite.item;
 
 import dabdaddy.dynamic_dynamite.Reference;
 import dabdaddy.dynamic_dynamite.item.dynamite.BouncyDynamiteItem;
+import dabdaddy.dynamic_dynamite.item.dynamite.FusedDynamiteItem;
 import dabdaddy.dynamic_dynamite.item.dynamite.QuickDynamiteItem;
 import dabdaddy.dynamic_dynamite.tabs.ModCreativeTabs;
 import net.minecraft.world.item.Item;
@@ -17,6 +18,7 @@ public class ModItems
     public static final RegistryObject<Item> DYNAMITE_ITEM = ITEMS.register("dynamite", () -> new DynamiteItem());
     public static final RegistryObject<Item> QUICK_DYNAMITE_ITEM = ITEMS.register("quick_dynamite", () -> new QuickDynamiteItem());
     public static final RegistryObject<Item> BOUNCY_DYNAMITE_ITEM = ITEMS.register("bouncy_dynamite", () -> new BouncyDynamiteItem());
+    public static final RegistryObject<Item> FUSED_DYNAMITE_ITEM = ITEMS.register("fused_dynamite", () -> new FusedDynamiteItem());
 
     public static void addItemsToCreativeTab()
     {
