@@ -41,6 +41,11 @@ public class DynamiteProjectile extends ThrowableItemProjectile
         World.explode(this, _result.getBlockPos(), this.level(), 1.0f);
     }
 
+    protected void destroy()
+    {
+        this.discard();
+    }
+
     @Override
     public Packet<ClientGamePacketListener> getAddEntityPacket()
     {
@@ -61,7 +66,7 @@ public class DynamiteProjectile extends ThrowableItemProjectile
             contact(_result);
             if(destroyOnLanding())
             {
-                this.discard();
+                destroy();
             }
         }
 

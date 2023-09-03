@@ -1,9 +1,11 @@
 package dabdaddy.dynamic_dynamite.entity.dynamite;
 
 import dabdaddy.dynamic_dynamite.entity.DynamiteProjectile;
+import dabdaddy.dynamic_dynamite.item.ModItems;
 import dabdaddy.dynamic_dynamite.util.World;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 
@@ -24,5 +26,11 @@ public class QuickDynamiteProjectile extends DynamiteProjectile
     protected boolean destroyOnLanding()
     {
         return true;
+    }
+
+    @Override
+    protected Item getDefaultItem()
+    {
+        return ModItems.QUICK_DYNAMITE_ITEM.get();
     }
 }
