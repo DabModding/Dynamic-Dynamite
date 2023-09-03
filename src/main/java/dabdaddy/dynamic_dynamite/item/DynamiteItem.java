@@ -28,6 +28,10 @@ public class DynamiteItem extends Item
             proj.setItem(stack);
             proj.shootFromRotation(_player, _player.getXRot(), _player.getYRot(), 0.0F, 1.5F, 1.0F);
             _level.addFreshEntity(proj);
+
+            // Add Item Cooldown
+            int cooldownLengthTicks = 20;
+            _player.getCooldowns().addCooldown(this, cooldownLengthTicks);
         }
 
         _player.awardStat(Stats.ITEM_USED.get(this));
